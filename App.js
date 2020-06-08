@@ -40,9 +40,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar
-          barStyle="dark-content"
+          barStyle="light-content"
           hidden={false}
-          backgroundColor="#FFF"
+          backgroundColor="#212244"
           translucent={false}
         />
         <Router />

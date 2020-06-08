@@ -19,6 +19,9 @@ const Default = {
         "JosefinSans-ThinItalic",
       ],
     ],
+    colors: {
+      primary: "#212244"
+    },
     gradients: {
       btn: {
         colors: ["#8835F4", "#5B0EC0"],

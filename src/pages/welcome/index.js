@@ -1,12 +1,22 @@
 import React from 'react';
-import { Container, Text } from './styles';
-
+import { Container, BtnSignIn, BtnCreate, TextBtn } from './styles';
+import Waves from "@/components/waves";
+import { TouchableOpacity } from "react-native";
 // import { Container } from './styles';
 
-export default function welcome(){
+export default function welcome() {
     return (
         <Container>
-            <Text>Welcome Page</Text>
+            <Waves />
+            <TouchableOpacity>
+                <BtnCreate>
+                    <TextBtn>Create an account</TextBtn>
+                </BtnCreate>
+            </TouchableOpacity>
+
+            <BtnSignIn>
+                <TextBtn>Sign In</TextBtn>
+            </BtnSignIn>
         </Container>
     )
 }
