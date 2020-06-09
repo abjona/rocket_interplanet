@@ -51,7 +51,7 @@ export default function login({ navigation }) {
                             <Icon name="lock" />
                         </IconCol>
                         <InputCol>
-                            <Input placeholder={'E-mail'} />
+                            <Input secureTextEntry={true} placeholder={'Password'} />
                         </InputCol>
                     </InputContainer>
 

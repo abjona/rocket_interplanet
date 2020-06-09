@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { KeyboardAvoidingView, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 export const Container = styled.KeyboardAvoidingView`
@@ -11,7 +11,9 @@ export const Container = styled.KeyboardAvoidingView`
 	justify-content: flex-start;
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput.attrs({
+	placeholderTextColor: '#212244'
+})`
 	color: ${(props) => props.theme.colors.primary};
 `;
 
@@ -83,8 +85,8 @@ export const InputCol = styled.View`
 
 export const InputContainer = styled.View`
 	flex-direction: row;
-	padding-bottom: 8px;
-	margin-bottom: 30px;
+	padding-bottom: 10px;
+	margin-bottom: 35px;
 	width: 100%;
 	border-bottom-width: 1px;
 	border-bottom-color: ${(props) => props.theme.colors.primary};

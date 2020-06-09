@@ -8,7 +8,7 @@ export default function welcome({ navigation }) {
     return (
         <Container>
             <Waves />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate("SignUp")}>
                 <BtnCreate>
                     <TextBtn>Create an account</TextBtn>
                 </BtnCreate>
