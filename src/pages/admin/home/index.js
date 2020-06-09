@@ -17,7 +17,7 @@ import {
 } from './styles';
 
 import ImgAdmin from "@/assets/imgs/astronaut.png";
-import CardCompanie from "@/components/cardCompanie";
+import CardCompanie from "@/components/admin/cardCompanie";
 import Modal from "react-native-modal";
 
 const fakeApi = [
@@ -64,10 +64,12 @@ const ModalContent = () =>{
     )
 }
 
-export default function home() {
+export default function home({ navigation }) {
 
     const [modal, setModal] = useState(false);
-
+    const handleClick = ( data ) => {
+        navigation.navigate('RocketAdmin', { data: data });
+    }
     return (
         <Container>
             
@@ -108,7 +110,7 @@ export default function home() {
                 </Row>
                 {fakeApi.map((ele, i) => {
                     return (
-                        <CardCompanie data={ele} key={i} />
+                        <CardCompanie click={()=> handleClick(ele)} data={ele} key={i} />
                     )
                 })}
             </ScrollView>

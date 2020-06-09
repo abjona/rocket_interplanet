@@ -6,6 +6,7 @@ import WelcomePage from "@/pages/welcome";
 import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
 import HomeAdmin from "@/pages/admin/home";
+import RocketAdmin from "@/pages/admin/rockets";
 
 const Router = () => {
 
@@ -36,6 +37,12 @@ const Router = () => {
                     options={{ headerShown: false }} 
                     name="HomeAdmin" 
                     component={HomeAdmin} 
+                />
+
+                <Stack.Screen 
+                    options={{ headerShown: false }} 
+                    name="RocketAdmin" 
+                    component={RocketAdmin} 
                 />
                 
             </Stack.Navigator>

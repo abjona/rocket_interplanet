@@ -9,7 +9,8 @@ import * as Font from "expo-font";
 export default function App() {
   const [theme, setTheme] = useState(Theme);
   const [fontLoad, setFontLoad] = useState(false);
- 
+  console.disableYellowBox = true;
+  
   useEffect(()=>{
     async function loadFont() {
       // await AsyncStorage.clear();
@@ -36,7 +37,6 @@ export default function App() {
     loadFont();
   });
 
-  console.disableYellowBox;
 
   return fontLoad ?(
     

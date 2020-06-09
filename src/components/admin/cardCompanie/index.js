@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import { Container, Row, Text, Title, Stars, Detail } from './styles';
 
-export default function cardCompanie({ data }){
+export default function cardCompanie({ data, click }){
 
     const Rating = () =>{
         let aux =  5 - data.rating;
@@ -18,7 +18,7 @@ export default function cardCompanie({ data }){
         return array;
     }
     return(
-        <Container>
+        <Container onPress={click}>
             <Detail />
             <Row>
                 <Title>
