@@ -30,6 +30,7 @@ export const ColTitle = styled.View`
 export const Title = styled.Text`
     font-family: ${(props) => props.theme.fonts[0][2]};
     font-size: 20px;
+    color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Icon = styled(FontAwesome5).attrs({

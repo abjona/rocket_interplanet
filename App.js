@@ -9,7 +9,7 @@ import * as Font from "expo-font";
 export default function App() {
   const [theme, setTheme] = useState(Theme);
   const [fontLoad, setFontLoad] = useState(false);
-
+ 
   useEffect(()=>{
     async function loadFont() {
       // await AsyncStorage.clear();
@@ -34,9 +34,12 @@ export default function App() {
     }
 
     loadFont();
-  })
+  });
+
+  console.disableYellowBox;
 
   return fontLoad ?(
+    
     <ThemeProvider theme={theme}>
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar

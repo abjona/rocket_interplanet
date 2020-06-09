@@ -14,7 +14,7 @@ import Header from "@/components/header";
 export default function signup({ navigation }) {
     return (
         <>
-            <Header name="Create on Account" back={navigation.goBack} />
+            <Header name="Create an Account" back={navigation.goBack} />
             <Container>
                 <Form>
                     <InputContainer>
