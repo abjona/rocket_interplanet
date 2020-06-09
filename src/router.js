@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import WelcomePage from "@/pages/welcome";
 import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
-
+import HomeAdmin from "@/pages/admin/home";
 
 const Router = () => {
 
@@ -30,6 +30,12 @@ const Router = () => {
                     options={{ headerShown: false }} 
                     name="SignUp" 
                     component={SignupPage} 
+                />
+
+                <Stack.Screen 
+                    options={{ headerShown: false }} 
+                    name="HomeAdmin" 
+                    component={HomeAdmin} 
                 />
                 
             </Stack.Navigator>

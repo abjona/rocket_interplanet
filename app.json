@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rocket_interplanet",
-    "slug": "rocket_interplanet",
+    "name": "Rocket",
+    "slug": "Rocket",
     "platforms": [
       "ios",
       "android",
@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#212244"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

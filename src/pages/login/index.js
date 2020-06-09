@@ -60,7 +60,7 @@ export default function login({ navigation }) {
                             <TextSignIn>Sign In</TextSignIn>
                         </Col>
                         <Col style={{ width: 'auto'}}>
-                            <BtnSignin>
+                            <BtnSignin onPress={()=> navigation.navigate('HomeAdmin')}>
                                 <IconSignin name={'arrow-right'}/>
                             </BtnSignin>
                         </Col>
