@@ -4,7 +4,7 @@ import Waves from "@/components/waves";
 import { TouchableOpacity } from "react-native";
 // import { Container } from './styles';
 
-export default function welcome() {
+export default function welcome({ navigation }) {
     return (
         <Container>
             <Waves />
@@ -14,7 +14,7 @@ export default function welcome() {
                 </BtnCreate>
             </TouchableOpacity>
 
-            <BtnSignIn>
+            <BtnSignIn onPress={()=> navigation.navigate("Login")}>
                 <TextBtn>Sign In</TextBtn>
             </BtnSignIn>
         </Container>

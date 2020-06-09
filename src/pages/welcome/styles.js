@@ -1,10 +1,12 @@
 import styled from 'styled-components/native';
 import { LinearGradient } from "expo-linear-gradient";
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-start;
   align-items: center;
+  background-color: #fff;
 `;
 
 export const Text = styled.Text`
@@ -17,7 +19,7 @@ export const BtnCreate = styled(LinearGradient).attrs((props)=>{
   return gradients['btn'];
 })`
   padding: 22px 0px;
-  width: 220px;
+  width: ${Dimensions.get('window').width - 150 + 'px'};
   border-radius: 25px;
   justify-content: center;
   align-items: center;
@@ -32,7 +34,7 @@ export const TextBtn = styled.Text`
 
 export const BtnSignIn = styled.TouchableOpacity`
   padding: 22px 0px;
-  width: 220px;
+  width: ${Dimensions.get('window').width - 150 + 'px'};
   margin-top: 10px;
   border-radius: 25px;
   justify-content: center;

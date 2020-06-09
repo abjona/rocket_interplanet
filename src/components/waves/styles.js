@@ -11,6 +11,6 @@ export const Container = styled.View`
 `;
 
 export const Logo = styled(Animated.Image)`
-    height: 130px;
-    width: 130px;
+  height: 130px;
+  width: 130px;
 `;

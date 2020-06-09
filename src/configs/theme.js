@@ -20,7 +20,8 @@ const Default = {
       ],
     ],
     colors: {
-      primary: "#212244"
+      primary: "#212244",
+      secondary: "#8835F4"
     },
     gradients: {
       btn: {
