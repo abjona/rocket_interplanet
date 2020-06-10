@@ -7,6 +7,7 @@ import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
 import HomeAdmin from "@/pages/admin/home";
 import RocketAdmin from "@/pages/admin/rockets";
+import HomeUser from "@/pages/user/home";
 
 const Router = () => {
 
@@ -43,6 +44,12 @@ const Router = () => {
                     options={{ headerShown: false }} 
                     name="RocketAdmin" 
                     component={RocketAdmin} 
+                />
+
+                <Stack.Screen 
+                    options={{ headerShown: false }} 
+                    name="HomeUser" 
+                    component={HomeUser} 
                 />
                 
             </Stack.Navigator>
