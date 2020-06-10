@@ -41,7 +41,7 @@ export default function App() {
   return fontLoad ?(
     
     <ThemeProvider theme={theme}>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 , backgroundColor: '#fff' }}>
         <StatusBar
           barStyle="light-content"
           hidden={false}

@@ -5,9 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import WelcomePage from "@/pages/welcome";
 import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
-import HomeAdmin from "@/pages/admin/home";
-import RocketAdmin from "@/pages/admin/rockets";
-import HomeUser from "@/pages/user/home";
+import HomeAdminPage from "@/pages/admin/home";
+import RocketAdminPage from "@/pages/admin/rockets";
+import HomeUserPage from "@/pages/user/home";
+import CompaniesPage from "@/pages/user/companies";
 
 const Router = () => {
 
@@ -37,19 +38,25 @@ const Router = () => {
                 <Stack.Screen 
                     options={{ headerShown: false }} 
                     name="HomeAdmin" 
-                    component={HomeAdmin} 
+                    component={HomeAdminPage} 
                 />
 
                 <Stack.Screen 
                     options={{ headerShown: false }} 
                     name="RocketAdmin" 
-                    component={RocketAdmin} 
+                    component={RocketAdminPage} 
                 />
 
                 <Stack.Screen 
                     options={{ headerShown: false }} 
                     name="HomeUser" 
-                    component={HomeUser} 
+                    component={HomeUserPage} 
+                />
+
+                <Stack.Screen 
+                    options={{ headerShown: false }} 
+                    name="Companies" 
+                    component={CompaniesPage} 
                 />
                 
             </Stack.Navigator>

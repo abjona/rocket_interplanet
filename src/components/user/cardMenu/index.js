@@ -13,7 +13,7 @@ const images = {
 
 export default function cardMenu({ desc, click }){
     return (
-        <Container activeOpacity={1}>
+        <Container onPress={click} activeOpacity={1}>
             <Row>
                 <Col>
                     <ImageMenu source={images[desc]}/>

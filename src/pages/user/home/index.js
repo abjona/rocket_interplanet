@@ -15,7 +15,7 @@ const fakeReservation = [
     }
 ];
 
-export default function home() {
+export default function home({ navigation }) {
     return (
         <Container>
             <Cover>
@@ -48,7 +48,7 @@ export default function home() {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                 >
-                    <CardMenu desc="Companies" />
+                    <CardMenu click={()=>{ navigation.navigate("Companies") }} desc="Companies" />
                     <CardMenu desc="Rockets" />
                 </Scroll>
             </Div>
