@@ -7,12 +7,12 @@ import RocketImg from "@/assets/imgs/rocket.png";
 export default function cardRocket({ data }) {
     return (
         <Container>
-            <Col style={{ width: "25%" }}>
+            <Col style={{ width: "30%" }}>
                 <Card>
                     <Img source={RocketImg} />
                 </Card>
             </Col>
-            <Col style={{ width: "40%" }}>
+            <Col style={{ width: "50%" }}>
                 <Row>
                     <Title>{data.model}</Title>
                 </Row>
@@ -20,21 +20,21 @@ export default function cardRocket({ data }) {
                     <Col>
                         <IconInfo name="info"/>
                     </Col>
-                    <Text>{data.available ? 'Available' : 'Not Available'}</Text>
+                    <Text>{data.accents > 0 ? 'Available' : 'Not Available'}</Text>
                 </Row>
 
                 <Row style={{ marginTop: 2 }}>
                     <Col>
                         <IconMoney name="attach-money"/>
                     </Col>
-                    <Text>{data.price}</Text>
+                    <Text>{data.price} per flight</Text>
                 </Row>
                 
             </Col>
-            <Col>
+            <Col style={{ width: "20%" }}>
                 <Row>
                     <IconChair name="chair" />
-                    <Text>{data.sits}</Text>
+                    <Text>{data.accents}</Text>
                 </Row>
             </Col>
         </Container>

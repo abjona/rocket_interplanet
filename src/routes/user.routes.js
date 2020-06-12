@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeUserPage from "@/pages/user/home";
 import CompaniesPage from "@/pages/user/companies";
+import RocketsPage from "@/pages/user/rockets";
 
 const Router = () => {
 
@@ -20,6 +21,12 @@ const Router = () => {
                 options={{ headerShown: false }}
                 name="Companies"
                 component={CompaniesPage}
+            />
+
+            <Stack.Screen
+                options={{ headerShown: false }}
+                name="Rockets"
+                component={RocketsPage}
             />
 
         </Stack.Navigator>

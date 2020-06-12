@@ -53,7 +53,6 @@ export const TextBtn = styled.Text`
 `;
 
 export const ModalContainer = styled.View`
-    height: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 20px 20px 20px 20px;

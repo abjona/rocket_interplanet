@@ -3,28 +3,29 @@ import { View, ActivityIndicator } from 'react-native';
 import { Container, Icon, IconCol, Input, InputCol, InputContainer } from './styles';
 
 import api from "@/configs/api";
-import CardCompany from "@/components/user/cardCompany";
+import CardRocket from "@/components/user/cardRocket";
 import Header from "@/components/header";
 import CompanyImg from "@/assets/imgs/company.png";
 import { ScrollView } from 'react-native';
 
-export default function companies({ navigation }) {
-    const [companies, setCompanies] = useState(null);
+export default function rockets({ navigation, route }) {
+    const { _id, name } = route.params;
+    const [rockets, setRockets] = useState(null);
     const [load, setLoad] = useState(false);
 
-    const getCompanies = async () => {
+    const getRockets = async () => {
         setLoad(true);
-        const response = await api.get('/company/get');
-        setCompanies(response.data);
+        const response = await api.get(_id ? `/rocket/${_id}` : 'rocket/getAll');
+        setRockets(response.data);
         setLoad(false);
     }
 
     useEffect(() => {
-        getCompanies();
+        getRockets();
     }, [])
     return (
         <>
-            <Header name="Companies" back={navigation.goBack} />
+            <Header name={_id ? name : "Rockets"} back={navigation.goBack} />
             <Container>
                 {load ?
                     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -38,16 +39,12 @@ export default function companies({ navigation }) {
                                     <Icon name="search" />
                                 </IconCol>
                                 <InputCol>
-                                    <Input placeholder={'Search a company'} />
+                                    <Input placeholder={'Search a rocket'} />
                                 </InputCol>
                             </InputContainer>
-                            {companies ? companies.map((ele, i) => {
+                            {rockets ? rockets.map((ele, i) => {
                                 return (
-                                    <CardCompany 
-                                        click={()=> navigation.navigate("Rockets",{ _id: ele._id, name: ele.name })} 
-                                        data={ele} 
-                                        key={i} 
-                                    />
+                                    <CardRocket data={ele} key={i} />
                                 )
                             }) :
                                 <></>

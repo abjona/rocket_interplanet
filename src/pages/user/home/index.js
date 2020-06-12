@@ -77,7 +77,7 @@ export default function home({ navigation }) {
                     showsHorizontalScrollIndicator={false}
                 >
                     <CardMenu click={() => { navigation.navigate("Companies") }} desc="Companies" />
-                    <CardMenu desc="Rockets" />
+                    <CardMenu click={() => { navigation.navigate("Rockets",{ _id: null, name: null }) }} desc="Rockets" />
                 </Scroll>
             </Div>
             <View style={{ paddingHorizontal: 20 }}>

@@ -4,7 +4,8 @@ import { View } from 'react-native';
 import { Container, Card, Col, Row, Text, Title, ImageCard , Stars} from './styles';
 import CompanyImg from "@/assets/imgs/company.png";
 
-export default function companies({ data }){
+export default function companies({ data, click }){
+
     const Rating = () =>{
         var sum = 0;
         console.log(data);
@@ -32,7 +33,7 @@ export default function companies({ data }){
         return array;
     }
     return (
-        <Container> 
+        <Container onPress={click}> 
             <Col style={{ width: '35%'}}>
                 <Card>
                     <ImageCard source={CompanyImg}/>
@@ -44,7 +45,7 @@ export default function companies({ data }){
                     <Title>{data.name}</Title>
                 </Row>
                 <Row>
-                    <Text>{data.rockets} Rockets</Text>
+                    <Text>Travel company</Text>
                 </Row>
                 <Row>
                     <Rating />

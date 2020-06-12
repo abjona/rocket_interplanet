@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 export const Container = styled.TouchableOpacity`
     padding: 15px 25px;
     margin: 10px 0;
-    margin-left: 5px;
+    margin-left: 0px;
     border-radius: 15px;
     background-color: #fff; 
     z-index: 1;
@@ -27,7 +27,6 @@ export const Stars = styled(FontAwesome)`
 export const Detail = styled.View`
     position: absolute;
     left: -5px;
-    z-index: 10;
     top: 20px;
     background-color: ${(props) => props.theme.colors.secondary};
     border-radius: 5px;
