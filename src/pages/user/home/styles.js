@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions } from "react-native";
-import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
+import { Entypo, SimpleLineIcons, Feather } from "@expo/vector-icons";
 
 export const Container = styled.View`
     flex: 1;
@@ -59,3 +59,10 @@ export const Div = styled.View`
     z-index: 2;
     margin-top: ${-Dimensions.get('window').height * 0.20};
 `;
+
+export const IconInfo = styled(Feather)`
+    font-size: 15px;
+    padding-right: 2px;
+    color: ${(props) => props.theme.colors.secondary};
+`;
+

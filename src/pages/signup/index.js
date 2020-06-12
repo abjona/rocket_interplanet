@@ -31,6 +31,7 @@ export default function signup({ navigation }) {
             });
     
             const { error, message } = response.data;
+            
             if(error){
                 showMessage({
                     message: "Error",
