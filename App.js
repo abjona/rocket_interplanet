@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { ThemeProvider } from "styled-components";
 import { Theme } from "@/configs/theme";
+import { AuthProvider } from "@/contexts/auth";
+import { NavigationContainer } from "@react-navigation/native";
+import Routes from "@/routes";
+import FlashMessage from "react-native-flash-message";
 
-import Router from "@/router";
 import * as Font from "expo-font";
 
 export default function App() {
   const [theme, setTheme] = useState(Theme);
   const [fontLoad, setFontLoad] = useState(false);
   console.disableYellowBox = true;
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     async function loadFont() {
       // await AsyncStorage.clear();
       await Font.loadAsync({
@@ -38,19 +41,33 @@ export default function App() {
   });
 
 
-  return fontLoad ?(
-    
-    <ThemeProvider theme={theme}>
-      <SafeAreaView style={{ flex: 1 , backgroundColor: '#fff' }}>
-        <StatusBar
-          barStyle="light-content"
-          hidden={false}
-          backgroundColor="#212244"
-          translucent={false}
-        />
-        <Router />
-      </SafeAreaView>
-    </ThemeProvider>
-  ): <></>
+  return fontLoad ? (
+
+    <>
+      <ThemeProvider theme={theme}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+          <StatusBar
+            barStyle="light-content"
+            hidden={false}
+            backgroundColor="#212244"
+            translucent={false}
+          />
+          <NavigationContainer>
+            <AuthProvider>
+              <Routes />
+            </AuthProvider>
+          </NavigationContainer>
+
+        </SafeAreaView>
+      </ThemeProvider>
+      <FlashMessage
+        position="top"
+        style={{
+          zIndex: 1,
+          marginTop: -25
+        }}
+      />
+    </>
+  ) : <></>
 }
 

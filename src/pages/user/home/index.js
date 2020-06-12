@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions, View } from 'react-native';
-
+import { useAuth } from "@/contexts/auth";
 import { Container, Cover, Btn, Col, IconLogOut, Img, Row, Text, IconWallet, Scroll, Div } from './styles';
 import ImgUser from "@/assets/imgs/astronaut.png";
 import CardMenu from "@/components/user/cardMenu";
@@ -16,6 +16,7 @@ const fakeReservation = [
 ];
 
 export default function home({ navigation }) {
+    const { user, signOut } = useAuth();
     return (
         <Container>
             <Cover>
@@ -24,11 +25,11 @@ export default function home({ navigation }) {
                         <Img source={ImgUser} />
                     </Col>
                     <Col style={{ width: "65%" }}>
-                        <Text>JONATHAN</Text>
-                        <Text>abjonathan@hotmail.com</Text>
+                        <Text>{user?.name}</Text>
+                        <Text>{user?.email}</Text>
                     </Col>
                     <Col style={{ width: "10%" }}>
-                        <Btn>
+                        <Btn onPress={signOut}>
                             <IconLogOut name="log-out" />
                         </Btn>
                     </Col>
@@ -38,7 +39,7 @@ export default function home({ navigation }) {
                         <IconWallet name="wallet" />
                     </Col>
                     <Col>
-                        <Text style={{ fontSize: 30, fontWeight: 'normal' }}>U$ 10000,00</Text>
+                        <Text style={{ fontSize: 30, fontWeight: 'normal' }}>U$ {user?.balance}</Text>
                     </Col>
                 </Row>
 

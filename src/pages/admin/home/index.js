@@ -16,6 +16,7 @@ import {
     TextBtnAdd
 } from './styles';
 
+import { useAuth } from "@/contexts/auth";
 import ImgAdmin from "@/assets/imgs/astronaut.png";
 import CardCompanie from "@/components/admin/cardCompanie";
 import Modal from "react-native-modal";
@@ -65,11 +66,13 @@ const ModalContent = () =>{
 }
 
 export default function home({ navigation }) {
-
+    const { user, signOut } = useAuth();
     const [modal, setModal] = useState(false);
+
     const handleClick = ( data ) => {
         navigation.navigate('RocketAdmin', { data: data });
     }
+
     return (
         <Container>
             
@@ -87,11 +90,11 @@ export default function home({ navigation }) {
                     <Img source={ImgAdmin} />
                 </Col>
                 <Col style={{ width: "65%" }}>
-                    <Text>JONATHAN</Text>
-                    <Text>Admin</Text>
+                    <Text>{user?.name}</Text>
+                    <Text>{user?.type}</Text>
                 </Col>
                 <Col style={{ width: "10%" }}>
-                    <Btn>
+                    <Btn onPress={signOut}>
                         <IconLogOut name="log-out" />
                     </Btn>
                 </Col>

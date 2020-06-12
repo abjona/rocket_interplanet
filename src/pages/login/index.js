@@ -1,19 +1,20 @@
-import React from 'react';
-import { KeyboardAvoidingView } from 'react-native';
-
-import { 
-    Container, 
-    Icon, 
-    IconCol, 
-    Input, 
-    InputCol, 
-    InputContainer, 
-    Form, 
-    Row, 
+import React, { useState } from 'react';
+import { KeyboardAvoidingView, ActivityIndicator } from 'react-native';
+import { useAuth } from "@/contexts/auth";
+import { showMessage } from "react-native-flash-message";
+import {
+    Container,
+    Icon,
+    IconCol,
+    Input,
+    InputCol,
+    InputContainer,
+    Form,
+    Row,
     Col,
-    ColText, 
-    H1, 
-    Logo ,
+    ColText,
+    H1,
+    Logo,
     P,
     TextSignIn,
     IconSignin,
@@ -24,6 +25,30 @@ import Header from "@/components/header";
 import RockImg from "@/assets/imgs/rocket.png"
 
 export default function login({ navigation }) {
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [load, setLoad] = useState(false);
+
+    const { signIn } = useAuth();
+
+    const handleSignIn = async () => {
+        if (!email || !password) {
+            showMessage({
+                message: "Error",
+                description: "error when logging in",
+                type: "danger",
+                duration: 2500
+            });
+            setLoad(false);
+        }
+        else {
+            await signIn({ email, password });
+            setLoad(false);
+        }
+
+    }
+
+
     return (
         <>
             <Container behavior={'position'}>
@@ -42,7 +67,14 @@ export default function login({ navigation }) {
                             <Icon name="user" />
                         </IconCol>
                         <InputCol>
-                            <Input placeholder={'E-mail'} />
+                            <Input
+                                autoCorrect={false}
+                                autoCapitalize="none"
+                                textContentType={"emailAddress"}
+                                value={email}
+                                onChangeText={setEmail}
+                                placeholder={'E-mail'}
+                            />
                         </InputCol>
                     </InputContainer>
 
@@ -51,20 +83,37 @@ export default function login({ navigation }) {
                             <Icon name="lock" />
                         </IconCol>
                         <InputCol>
-                            <Input secureTextEntry={true} placeholder={'Password'} />
+                            <Input
+                                value={password}
+                                autoCorrect={false}
+                                autoCapitalize="none"
+                                onChangeText={setPassword}
+                                secureTextEntry={true}
+                                placeholder={'Password'}
+                            />
                         </InputCol>
                     </InputContainer>
+                    {load &&
+                        <Row style={{ justifyContent: "center", alignItems: "center" }}>
+                            <ActivityIndicator color="#212244" />
+                        </Row>
+                    }
+                    {!load &&
+                        <Row style={{ justifyContent: 'space-between' }}>
+                            <Col style={{ width: 'auto' }}>
+                                <TextSignIn>Sign In</TextSignIn>
+                            </Col>
+                            <Col style={{ width: 'auto' }}>
+                                <BtnSignin onPress={() => {
+                                    setLoad(true);
+                                    handleSignIn();
+                                }}>
+                                    <IconSignin name={'arrow-right'} />
+                                </BtnSignin>
+                            </Col>
+                        </Row>
+                    }
 
-                    <Row style={{ justifyContent: 'space-between' }}>
-                        <Col style={{ width: 'auto'}}>
-                            <TextSignIn>Sign In</TextSignIn>
-                        </Col>
-                        <Col style={{ width: 'auto'}}>
-                            <BtnSignin onPress={()=> navigation.navigate('HomeUser')}>
-                                <IconSignin name={'arrow-right'}/>
-                            </BtnSignin>
-                        </Col>
-                    </Row>
                 </Form>
 
             </Container>

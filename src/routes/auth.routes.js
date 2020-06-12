@@ -15,7 +15,6 @@ const Router = () => {
     const Stack = createStackNavigator();
     
     return (
-        <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen 
                     options={{ headerShown: false }} 
@@ -34,33 +33,8 @@ const Router = () => {
                     name="SignUp" 
                     component={SignupPage} 
                 />
-
-                <Stack.Screen 
-                    options={{ headerShown: false }} 
-                    name="HomeAdmin" 
-                    component={HomeAdminPage} 
-                />
-
-                <Stack.Screen 
-                    options={{ headerShown: false }} 
-                    name="RocketAdmin" 
-                    component={RocketAdminPage} 
-                />
-
-                <Stack.Screen 
-                    options={{ headerShown: false }} 
-                    name="HomeUser" 
-                    component={HomeUserPage} 
-                />
-
-                <Stack.Screen 
-                    options={{ headerShown: false }} 
-                    name="Companies" 
-                    component={CompaniesPage} 
-                />
-                
+    
             </Stack.Navigator>
-        </NavigationContainer>
     )
 }
 
