@@ -1,51 +1,52 @@
 import React from 'react';
-import { View } from 'react-native';
-
 import { Container, Row, Text, Title, Stars, Detail } from './styles';
 
-export default function cardCompanie({ data, click }) {
+export default function cardCompanie({ data, click, clickPress }) {
+  const Rating = () => {
+    let sum = 0;
+    console.log(data);
 
-    const Rating = () => {
-        var sum = 0;
-      
-        data.rating.forEach(ele => {
-            sum += ele;
-        });
+    data.rating.forEach((ele) => {
+      sum += ele;
+    });
 
-        let rating = sum / data.rating.length;
-
-        if (Math.trunc(rating) == 1) {
-            rating = 5;
-        }
-        let aux = 5 - Math.trunc(rating);
-
-        let array = [];
-
-        for (let i = 0; i < Math.trunc(rating); i++) {
-            array.push(<Stars name={'star'} />)
-        }
-
-        for (let i = 0; i < Math.trunc(aux); i++) {
-            array.push(<Stars name={'star-o'} />)
-        }
-        return array;
+    let rating;
+    if (data.rating.legth - 1 === 0) {
+      rating = 0;
+    } else {
+      rating = sum / (data.rating.length - 1);
     }
-    return (
-        <Container onPress={click}>
-            <Detail />
-            <Row>
-                <Title>
-                    {data.name}
-                </Title>
-            </Row>
-            <Row>
-                <Text>
-                    Travel company
-                </Text>
-            </Row>
-            <Row style={{ justifyContent: 'flex-end' }}>
-                <Rating />
-            </Row>
-        </Container>
-    )
+
+    if (Math.trunc(rating) === 1) {
+      rating = 5;
+    }
+    const aux = 5 - (rating ? Math.trunc(rating) : 0);
+
+    console.log(Math.trunc(aux));
+
+    const array = [];
+
+    for (let i = 0; i < Math.trunc(rating); i++) {
+      array.push(<Stars name="star" />);
+    }
+
+    for (let i = 0; i < Math.trunc(aux); i++) {
+      array.push(<Stars name="star-o" />);
+    }
+    return array;
+  };
+  return (
+    <Container onLongPress={clickPress} onPress={click}>
+      <Detail />
+      <Row>
+        <Title>{data.name}</Title>
+      </Row>
+      <Row>
+        <Text>Travel company</Text>
+      </Row>
+      <Row style={{ justifyContent: 'flex-end' }}>
+        <Rating />
+      </Row>
+    </Container>
+  );
 }

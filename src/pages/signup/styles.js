@@ -2,14 +2,14 @@ import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 
 export const Container = styled.ScrollView`
-    background-color: #fff;
-	padding-left: 60px;
-	padding-right: 60px;
-    flex: 1;
+  background-color: #fff;
+  padding-left: 60px;
+  padding-right: 60px;
+  flex: 1;
 `;
 
 export const Form = styled.View`
-	margin: ${Dimensions.get('window').height * 0.1 + 'px'}  0px;
+  margin: ${`${Dimensions.get('window').height * 0.1}px`} 0px;
 `;
 
 export const TextBtn = styled.Text`
@@ -26,5 +26,5 @@ export const BtnSignUp = styled.TouchableOpacity`
   border-radius: 25px;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.primary}
+  background-color: ${(props) => props.theme.colors.primary};
 `;

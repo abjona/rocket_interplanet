@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { FontAwesome, Entypo, Fontisto } from '@expo/vector-icons';
+import { MaterialIcons, Entypo, Fontisto, Feather, FontAwesome5 } from '@expo/vector-icons';
 
 export const Icon = styled(Fontisto)`
   font-size: 30px;
@@ -10,6 +10,11 @@ export const Container = styled.View`
   padding: 10px 20px 0px 20px;
   background-color: #fff;
   flex: 1;
+`;
+
+export const ImageCard = styled.Image`
+  width: 60px;
+  height: 60px;
 `;
 
 export const Row = styled.View`
@@ -46,28 +51,10 @@ export const Title = styled.Text`
   font-weight: bold;
 `;
 
-export const Desc = styled.Text`
-  font-family: ${(props) => props.theme.fonts[0][2]};
-  color: ${(props) => props.theme.colors.primary};
-  font-size: 20px;
-  font-weight: bold;
-`;
-
 export const Text = styled.Text`
   font-family: ${(props) => props.theme.fonts[0][2]};
   color: ${(props) => props.theme.colors.primary};
-  font-size: 15px;
-`;
-
-export const Img = styled.Image`
-  height: 80px;
-  width: 80px;
-`;
-
-export const Stars = styled(FontAwesome)`
-  color: ${(props) => props.theme.colors.secondary};
-  font-size: 12px;
-  margin-right: 5px;
+  font-size: 18px;
 `;
 
 export const IconAdd = styled(Entypo)`
@@ -84,27 +71,40 @@ export const ModalContainer = styled.View`
   background-color: #fff;
 `;
 
-export const Input = styled.TextInput.attrs({
-  placeholderTextColor: '#212244',
-})`
-  border-width: 1px;
-  border-color: ${(props) => props.theme.colors.primary};
-  border-style: solid;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  height: 50px;
-  color: ${(props) => props.theme.colors.primary};
-  width: 100%;
-  border-radius: 10px;
-`;
-
 export const BtnAddCompany = styled.TouchableOpacity`
   height: 50px;
   width: 100%;
+  position: absolute;
+  bottom: 5;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.primary};
+`;
+
+export const BtnOk = styled.TouchableOpacity`
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+`;
+
+export const ContentMsg = styled.View`
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+`;
+
+export const TextMsg = styled.Text`
+  font-family: ${(props) => props.theme.fonts[0][2]};
+  font-size: 17px;
+`;
+export const TitleMsg = styled.Text`
+  font-family: ${(props) => props.theme.fonts[0][2]};
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 export const TextBtn = styled.Text`
@@ -112,4 +112,22 @@ export const TextBtn = styled.Text`
   color: #fff;
   font-size: 17px;
   font-weight: bold;
+`;
+
+export const IconInfo = styled(Feather)`
+  font-size: 15px;
+  padding-right: 2px;
+  color: ${(props) => props.theme.colors.secondary};
+`;
+
+export const IconMoney = styled(MaterialIcons)`
+  font-size: 15px;
+  padding-right: 2px;
+  color: ${(props) => props.theme.colors.secondary};
+`;
+
+export const IconChair = styled(FontAwesome5)`
+  font-size: 15px;
+  padding-right: 3px;
+  color: ${(props) => props.theme.colors.secondary};
 `;

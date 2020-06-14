@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { LinearGradient } from "expo-linear-gradient";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
@@ -14,12 +14,12 @@ export const Text = styled.Text`
   font-family: ${(props) => props.theme.fonts[0][2]};
 `;
 
-export const BtnCreate = styled(LinearGradient).attrs((props)=>{
+export const BtnCreate = styled(LinearGradient).attrs((props) => {
   const { gradients } = props.theme;
-  return gradients['btn'];
+  return gradients.btn;
 })`
   padding: 22px 0px;
-  width: ${Dimensions.get('window').width - 150 + 'px'};
+  width: ${`${Dimensions.get('window').width - 150}px`};
   border-radius: 25px;
   justify-content: center;
   align-items: center;
@@ -34,10 +34,10 @@ export const TextBtn = styled.Text`
 
 export const BtnSignIn = styled.TouchableOpacity`
   padding: 22px 0px;
-  width: ${Dimensions.get('window').width - 150 + 'px'};
+  width: ${`${Dimensions.get('window').width - 150}px`};
   margin-top: 10px;
   border-radius: 25px;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.primary}
+  background-color: ${(props) => props.theme.colors.primary};
 `;

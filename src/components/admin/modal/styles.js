@@ -46,28 +46,10 @@ export const Title = styled.Text`
   font-weight: bold;
 `;
 
-export const Desc = styled.Text`
-  font-family: ${(props) => props.theme.fonts[0][2]};
-  color: ${(props) => props.theme.colors.primary};
-  font-size: 20px;
-  font-weight: bold;
-`;
-
 export const Text = styled.Text`
   font-family: ${(props) => props.theme.fonts[0][2]};
   color: ${(props) => props.theme.colors.primary};
   font-size: 15px;
-`;
-
-export const Img = styled.Image`
-  height: 80px;
-  width: 80px;
-`;
-
-export const Stars = styled(FontAwesome)`
-  color: ${(props) => props.theme.colors.secondary};
-  font-size: 12px;
-  margin-right: 5px;
 `;
 
 export const IconAdd = styled(Entypo)`
