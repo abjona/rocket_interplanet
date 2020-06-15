@@ -12,7 +12,7 @@ export default function companies({ data, click }) {
     });
 
     let rating;
-    if (data.rating.legth - 1 === 0) {
+    if (data.rating.length - 1 === 0) {
       rating = 0;
     } else {
       rating = sum / (data.rating.length - 1);
@@ -46,7 +46,7 @@ export default function companies({ data, click }) {
 
       <Col>
         <Row>
-          <Title>{data.name}</Title>
+          <Title numberOfLines={1}>{data.name}</Title>
         </Row>
         <Row>
           <Text>Interplanetary travel</Text>

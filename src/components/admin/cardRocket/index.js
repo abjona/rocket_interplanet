@@ -23,7 +23,7 @@ export default function cardRocket({ data, click }) {
       </Col>
       <Col style={{ width: '50%' }}>
         <Row>
-          <Title>{data.model}</Title>
+          <Title numberOfLines={1}>{data.model}</Title>
         </Row>
         <Row style={{ marginTop: 2 }}>
           <Col>
@@ -36,7 +36,7 @@ export default function cardRocket({ data, click }) {
           <Col>
             <IconMoney name="attach-money" />
           </Col>
-          <Text>{data.price} per flight</Text>
+          <Text numberOfLines={1}>{data.price.toFixed(2)}</Text>
         </Row>
       </Col>
       <Col style={{ width: '20%' }}>

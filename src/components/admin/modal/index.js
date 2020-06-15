@@ -33,7 +33,7 @@ export default function modal({ closeModal, companyId, refresh, data }) {
   console.log(data);
 
   const validade = () => {
-    if (!model || !price || !accents || arrayDates.length === 0) {
+    if (!model || !price || !accents || arrayDates.length === 0 || accents === '0') {
       return false;
     }
 

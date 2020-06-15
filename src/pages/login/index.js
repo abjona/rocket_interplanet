@@ -47,7 +47,7 @@ export default function login() {
 
   return (
     <>
-      <Container behavior="position">
+      <Container>
         <Row>
           <Col>
             <Logo source={RockImg} />
@@ -66,7 +66,7 @@ export default function login() {
               <Input
                 autoCorrect={false}
                 autoCapitalize="none"
-                textContentType="emailAddress"
+                keyboardType="email-address"
                 value={email}
                 onChangeText={setEmail}
                 placeholder="E-mail"

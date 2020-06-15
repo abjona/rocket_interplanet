@@ -11,7 +11,7 @@ export default function header({ name, back }) {
           </BackBtn>
         </ColIcon>
         <ColTitle>
-          <Title> {name} </Title>
+          <Title numberOfLines={1}> {name} </Title>
         </ColTitle>
       </Row>
     </Container>

@@ -75,6 +75,17 @@ export default function reservation({ data, refreshReservation }) {
     }
   };
 
+  const verifyDates = () => {
+    const dateNow = moment().format('YYYY-MM-DD');
+    const dateMark = moment(data.date).format('YYYY-MM-DD');
+    const verif = moment(dateNow).isBefore(dateMark);
+
+    if (verif || dateNow !== dateMark) {
+      return false;
+    }
+    return true;
+  };
+
   const RateStars = () => {
     const array = [];
     for (let i = 1; i < 6; i++) {
@@ -189,14 +200,14 @@ export default function reservation({ data, refreshReservation }) {
       </Col>
       <Col style={{ width: '40%' }}>
         <Row>
-          <Title>{data.rocket_info[0].model}</Title>
+          <Title numberOfLines={1}>{data.rocket_info[0].model}</Title>
         </Row>
 
         <Row style={{ marginTop: 2 }}>
           <Col>
             <IconMoney name="attach-money" />
           </Col>
-          <Text>{data.price}</Text>
+          <Text numberOfLines={1}>{data.price.toFixed(2)}</Text>
         </Row>
 
         <Row style={{ marginTop: 2 }}>
@@ -207,7 +218,7 @@ export default function reservation({ data, refreshReservation }) {
         </Row>
       </Col>
       <Col>
-        {moment(new Date()).format('DD/MM/YYYY') === moment(data.date).format('DD/MM/YYYY') ? (
+        {verifyDates() ? (
           !data.rate ? (
             <BtnAdd onPress={() => setModalRate(true)}>
               <TextBtn>Rate</TextBtn>

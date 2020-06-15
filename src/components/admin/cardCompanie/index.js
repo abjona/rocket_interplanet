@@ -39,7 +39,7 @@ export default function cardCompanie({ data, click, clickPress }) {
     <Container onLongPress={clickPress} onPress={click}>
       <Detail />
       <Row>
-        <Title>{data.name}</Title>
+        <Title numberOfLines={1}>{data.name}</Title>
       </Row>
       <Row>
         <Text>Interplanetary travel</Text>

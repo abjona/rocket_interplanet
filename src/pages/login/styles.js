@@ -2,13 +2,13 @@ import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-export const Container = styled.KeyboardAvoidingView`
+export const Container = styled.ScrollView`
   flex: 1;
   padding-top: 55px;
   padding-left: 60px;
   padding-right: 60px;
   background-color: #fff;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
 `;
 
 export const Input = styled.TextInput.attrs({
@@ -23,7 +23,7 @@ export const Icon = styled(Feather)`
 `;
 
 export const Form = styled.View`
-  margin: ${`${Dimensions.get('window').height * 0.3}px`} 0px;
+  margin: ${`${Dimensions.get('window').height * 0.2}px`} 0px;
 `;
 
 export const Col = styled.View`
@@ -78,7 +78,7 @@ export const IconCol = styled.View`
 
 export const InputCol = styled.View`
   flex-direction: column;
-  width: 70%;
+  width: 82%;
   height: 100%;
 `;
 

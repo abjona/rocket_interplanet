@@ -13,14 +13,14 @@ export default function rocket({ data, click }) {
 
       <Col>
         <Row>
-          <Title>{data.model}</Title>
+          <Title numberOfLines={1}>{data.model}</Title>
         </Row>
         <Row>
           <Col>
             <IconMoney name="attach-money" />
           </Col>
           <Col>
-            <Text>U$ {data.price}</Text>
+            <Text numberOfLines={1}>{data.price.toFixed(2)}</Text>
           </Col>
         </Row>
         <Row>

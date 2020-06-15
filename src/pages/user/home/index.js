@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { View } from 'react-native';
 import { useAuth } from '@/contexts/auth';
 import api from '@/configs/api';
 
@@ -56,7 +56,7 @@ export default function home({ navigation }) {
             <IconWallet name="wallet" />
           </Col>
           <Col>
-            <Text style={{ fontSize: 30, fontWeight: 'normal' }}>U$ {user.balance}</Text>
+            <Text style={{ fontSize: 30, fontWeight: 'normal' }}>U$ {user.balance.toFixed(2)}</Text>
           </Col>
         </Row>
       </Cover>

@@ -21,6 +21,8 @@ export default function rockets({ navigation, route }) {
     const response = await api.get(_id ? `/rocket/${_id}` : 'rocket/getAll');
     setRockets(response.data);
     setRocketSearch(response.data);
+    console.log(response.data);
+
     setLoad(false);
   };
 

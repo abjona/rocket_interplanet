@@ -1,5 +1,12 @@
 import styled from 'styled-components/native';
-import { MaterialIcons, Entypo, Fontisto, Feather, FontAwesome5 } from '@expo/vector-icons';
+import {
+  MaterialIcons,
+  Entypo,
+  Fontisto,
+  Feather,
+  FontAwesome5,
+  FontAwesome,
+} from '@expo/vector-icons';
 
 export const Icon = styled(Fontisto)`
   font-size: 30px;
@@ -74,8 +81,7 @@ export const ModalContainer = styled.View`
 export const BtnAddCompany = styled.TouchableOpacity`
   height: 50px;
   width: 100%;
-  position: absolute;
-  bottom: 5;
+  margin-top: 10px;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -130,4 +136,10 @@ export const IconChair = styled(FontAwesome5)`
   font-size: 15px;
   padding-right: 3px;
   color: ${(props) => props.theme.colors.secondary};
+`;
+
+export const Stars = styled(FontAwesome)`
+  color: ${(props) => props.theme.colors.secondary};
+  font-size: 12px;
+  margin-right: 5px;
 `;

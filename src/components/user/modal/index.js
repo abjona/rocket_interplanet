@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import api from '@/configs/api';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { showMessage } from 'react-native-flash-message';
+import moment from 'moment';
 
 import Modal from 'react-native-modal';
 import { ScrollView, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
@@ -26,6 +25,7 @@ import {
   TitleMsg,
   TextMsg,
   BtnOk,
+  Stars,
 } from './styles';
 
 export default function modal({ closeModal, data, refreshData }) {
@@ -63,6 +63,10 @@ export default function modal({ closeModal, data, refreshData }) {
   };
 
   const validade = () => {
+    const dateNow = moment().format('YYYY-MM-DD');
+    const dateMark = moment(arrayDates[index]).format('YYYY-MM-DD');
+    const verif = moment(dateNow).isBefore(dateMark);
+
     if (index === null) {
       setModalNot(true);
       setMessageNot('Select one Date');
@@ -70,7 +74,45 @@ export default function modal({ closeModal, data, refreshData }) {
       setTitle('Date Required');
       return false;
     }
+    if (!verif && dateMark !== dateNow) {
+      setModalNot(true);
+      setMessageNot('rocket not available on this date');
+      setRequestError(true);
+      setTitle('Error');
+      return false;
+    }
     return true;
+  };
+
+  const Rating = () => {
+    let sum = 0;
+
+    data.company_info[0].rating.forEach((ele) => {
+      sum += ele;
+    });
+
+    let rating;
+    if (data.company_info[0].rating.length - 1 === 0) {
+      rating = 0;
+    } else {
+      rating = sum / (data.company_info[0].rating.length - 1);
+    }
+
+    if (Math.trunc(rating) === 1) {
+      rating = 5;
+    }
+    const aux = 5 - (rating ? Math.trunc(rating) : 0);
+
+    const array = [];
+
+    for (let i = 0; i < Math.trunc(rating); i++) {
+      array.push(<Stars name="star" />);
+    }
+
+    for (let i = 0; i < Math.trunc(aux); i++) {
+      array.push(<Stars name="star-o" />);
+    }
+    return array;
   };
 
   useEffect(() => {
@@ -142,59 +184,67 @@ export default function modal({ closeModal, data, refreshData }) {
           </TouchableOpacity>
         </Col>
       </Row>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+        <Row>
+          <Col style={{ width: '30%' }}>
+            <ImageCard source={RocketImg} />
+          </Col>
+          <Col>
+            <Row>
+              <Title numberOfLines={1}>{data.model}</Title>
+            </Row>
+            <Row style={{ marginTop: 3 }}>
+              <Col>
+                <IconMoney name="attach-money" />
+              </Col>
+              <Col>
+                <Text>{data.price.toFixed(2)}</Text>
+              </Col>
+            </Row>
+            <Row style={{ marginTop: 3 }}>
+              <Col>
+                <IconChair name="chair" />
+              </Col>
+              <Col>
+                <Text>{data.accents}</Text>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
 
-      <Row>
-        <Col style={{ width: '30%' }}>
-          <ImageCard source={RocketImg} />
-        </Col>
-        <Col>
-          <Row>
-            <Title>{data.model}</Title>
-          </Row>
-          <Row style={{ marginTop: 3 }}>
-            <Col>
-              <IconMoney name="attach-money" />
-            </Col>
-            <Col>
-              <Text>U$ {data.price}</Text>
-            </Col>
-          </Row>
-          <Row style={{ marginTop: 3 }}>
-            <Col>
-              <IconChair name="chair" />
-            </Col>
-            <Col>
-              <Text>{data.accents}</Text>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+        <Row style={{ marginVertical: 20, alignItems: 'center' }}>
+          <Title style={{ color: '#212244' }}>Company</Title>
+        </Row>
 
-      <Row style={{ marginTop: 20 }}>
-        <Col>
-          <IconInfo name="info" />
-        </Col>
-        <Text>{data.accents > 0 ? 'Available' : 'Not Available'}</Text>
-      </Row>
+        <Row style={{ alignItems: 'center' }}>
+          <Text>{data.company_info[0].name}</Text>
+        </Row>
 
-      <Row style={{ marginVertical: 20, justifyContent: 'space-between', alignItems: 'center' }}>
-        <Col>
-          <Title style={{ color: '#212244' }}>Dates</Title>
-        </Col>
-      </Row>
+        <Row style={{ marginVertical: 20, alignItems: 'center' }}>
+          <Title style={{ color: '#212244' }}>Rate</Title>
+        </Row>
 
-      <ScrollView style={{ flex: 1 }}>
+        <Row>
+          <Rating />
+        </Row>
+
+        <Row style={{ marginVertical: 20, justifyContent: 'space-between', alignItems: 'center' }}>
+          <Col>
+            <Title style={{ color: '#212244' }}>Dates</Title>
+          </Col>
+        </Row>
+
         <Aux />
+        <Row>
+          <BtnAddCompany onPress={makeReserve}>
+            {load ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <TextBtnAdd style={{ color: '#fff' }}>Reserve</TextBtnAdd>
+            )}
+          </BtnAddCompany>
+        </Row>
       </ScrollView>
-      <Row>
-        <BtnAddCompany onPress={makeReserve}>
-          {load ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <TextBtnAdd style={{ color: '#fff' }}>Reserve</TextBtnAdd>
-          )}
-        </BtnAddCompany>
-      </Row>
     </ModalContainer>
   );
 }

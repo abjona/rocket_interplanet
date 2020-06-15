@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'http://192.168.100.58:8080/rocketInterplanet';
+export const API_URL = 'https://rocket2020.herokuapp.com/rocketInterplanet';
 
 const api = axios.create({
   baseURL: API_URL,
