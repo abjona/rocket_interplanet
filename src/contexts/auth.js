@@ -15,6 +15,8 @@ export const AuthProvider = ({ children }) => {
       const storagedUser = await AsyncStorage.getItem('user');
       const storagedToken = await AsyncStorage.getItem('token');
 
+      console.log(storagedToken);
+
       if (storagedToken && storagedUser) {
         api.defaults.headers.Authorization = `Bearer ${storagedToken}`;
         const userData = JSON.parse(storagedUser);
@@ -37,8 +39,11 @@ export const AuthProvider = ({ children }) => {
 
       api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
-      await AsyncStorage.setItem('user', JSON.stringify(response.data.user));
-      await AsyncStorage.setItem('token', response.data.token);
+      const items = [
+        ['user', JSON.stringify(response.data.user)],
+        ['token', response.data.token],
+      ];
+      await AsyncStorage.multiSet(items);
     } else {
       showMessage({
         message: 'Error',
@@ -57,8 +62,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = async () => {
-    setUser(null);
     await AsyncStorage.clear();
+    setUser(null);
   };
 
   return (

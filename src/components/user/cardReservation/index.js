@@ -79,11 +79,19 @@ export default function reservation({ data, refreshReservation }) {
     const dateNow = moment().format('YYYY-MM-DD');
     const dateMark = moment(data.date).format('YYYY-MM-DD');
     const verif = moment(dateNow).isBefore(dateMark);
+    const verif2 = moment(dateNow).isAfter(dateMark);
 
-    if (verif || dateNow !== dateMark) {
+    console.log(verif2, verif);
+
+    if (verif) {
       return false;
     }
-    return true;
+    if (verif2) {
+      return true;
+    }
+    if (dateNow === dateMark) {
+      return true;
+    }
   };
 
   const RateStars = () => {

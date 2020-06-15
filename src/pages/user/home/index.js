@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator, AsyncStorage } from 'react-native';
 import { useAuth } from '@/contexts/auth';
 import api from '@/configs/api';
 
@@ -23,9 +23,12 @@ import {
 
 export default function home({ navigation }) {
   const { user, signOut } = useAuth();
-  const [reservation, setReservation] = useState([]);
+  const [reservation, setReservation] = useState(null);
 
   const getReservation = async () => {
+    const storagedToken = await AsyncStorage.getItem('token');
+    console.log(storagedToken);
+
     const response = await api.get('/reservation/get');
     setReservation(response.data);
   };
@@ -33,6 +36,10 @@ export default function home({ navigation }) {
   useEffect(() => {
     getReservation();
   }, [user]);
+
+  const handleSignout = async () => {
+    await signOut();
+  };
 
   return (
     <Container>
@@ -46,7 +53,7 @@ export default function home({ navigation }) {
             <Text>{user.email}</Text>
           </Col>
           <Col style={{ width: '10%' }}>
-            <Btn onPress={signOut}>
+            <Btn onPress={handleSignout}>
               <IconLogOut name="log-out" />
             </Btn>
           </Col>
@@ -80,24 +87,30 @@ export default function home({ navigation }) {
         <Row>
           <Text style={{ color: '#212244', fontSize: 25 }}>My Reservations</Text>
         </Row>
-        {reservation.length > 0 ? (
-          <CardReservation refreshReservation={getReservation} data={reservation[0]} />
+        {reservation ? (
+          reservation.length > 0 ? (
+            <CardReservation refreshReservation={getReservation} data={reservation[0]} />
+          ) : (
+            <Row style={{ alignItems: 'center', marginTop: 15 }}>
+              <Col style={{ width: '8%' }}>
+                <IconInfo name="info" />
+              </Col>
+              <Col>
+                <Text
+                  style={{
+                    color: '#8835F4',
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                  }}
+                >
+                  you have no reservation
+                </Text>
+              </Col>
+            </Row>
+          )
         ) : (
-          <Row style={{ alignItems: 'center', marginTop: 15 }}>
-            <Col style={{ width: '8%' }}>
-              <IconInfo name="info" />
-            </Col>
-            <Col>
-              <Text
-                style={{
-                  color: '#8835F4',
-                  fontSize: 20,
-                  fontWeight: 'normal',
-                }}
-              >
-                you have no reservation
-              </Text>
-            </Col>
+          <Row style={{ alignItems: 'center', marginTop: 15, marginLeft: 5 }}>
+            <ActivityIndicator color="#8835F4" />
           </Row>
         )}
       </View>
