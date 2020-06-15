@@ -25,8 +25,15 @@ yarn
 yarn install
 ```
 
-npm
+expo 
 
 ```bash
-npm install
+yarn global add expo-cli
 ```
+
+expo view
+
+```bash
+yarn start
+```
+
