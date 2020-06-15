@@ -8,12 +8,14 @@ import { Container, Icon, IconCol, Input, InputCol, InputContainer } from './sty
 
 export default function companies({ navigation }) {
   const [companiesData, setCompanies] = useState(null);
+  const [companiesSearch, setCompaniesSearch] = useState(null);
   const [load, setLoad] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
   const getCompanies = async () => {
     const response = await api.get('/company/get');
     setCompanies(response.data);
+    setCompaniesSearch(response.data);
     setLoad(false);
   };
 
@@ -27,6 +29,18 @@ export default function companies({ navigation }) {
     setLoad(true);
     getCompanies();
   }, []);
+
+  const searchComp = async (text) => {
+    const val = text;
+    if (val && val.trim() !== '') {
+      const search = companiesSearch.filter((item) => {
+        return item.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      });
+      await setCompanies(search);
+    } else {
+      await setCompanies(companiesSearch);
+    }
+  };
   return (
     <>
       <Header name="Companies" back={navigation.goBack} />
@@ -46,7 +60,7 @@ export default function companies({ navigation }) {
                   <Icon name="search" />
                 </IconCol>
                 <InputCol>
-                  <Input placeholder="Search a company" />
+                  <Input onChangeText={(text) => searchComp(text)} placeholder="Search a company" />
                 </InputCol>
               </InputContainer>
               {companiesData ? (

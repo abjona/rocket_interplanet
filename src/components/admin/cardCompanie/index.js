@@ -42,7 +42,7 @@ export default function cardCompanie({ data, click, clickPress }) {
         <Title>{data.name}</Title>
       </Row>
       <Row>
-        <Text>Travel company</Text>
+        <Text>Interplanetary travel</Text>
       </Row>
       <Row style={{ justifyContent: 'flex-end' }}>
         <Rating />

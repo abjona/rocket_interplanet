@@ -11,6 +11,7 @@ import { Container, Icon, IconCol, Input, InputCol, InputContainer } from './sty
 export default function rockets({ navigation, route }) {
   const { _id, name } = route.params;
   const [rocketsData, setRockets] = useState(null);
+  const [rocketSearch, setRocketSearch] = useState(null);
   const [modal, setModal] = useState(false);
   const [dataRocket, setDataRocket] = useState(null);
   const [load, setLoad] = useState(false);
@@ -19,6 +20,7 @@ export default function rockets({ navigation, route }) {
   const getRockets = async () => {
     const response = await api.get(_id ? `/rocket/${_id}` : 'rocket/getAll');
     setRockets(response.data);
+    setRocketSearch(response.data);
     setLoad(false);
   };
 
@@ -32,6 +34,18 @@ export default function rockets({ navigation, route }) {
     setLoad(true);
     getRockets();
   }, []);
+
+  const searchRocket = async (text) => {
+    const val = text;
+    if (val && val.trim() !== '') {
+      const search = rocketSearch.filter((item) => {
+        return item.model.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      });
+      await setRockets(search);
+    } else {
+      await setRockets(rocketSearch);
+    }
+  };
   return (
     <>
       <Header name={_id ? name : 'Rockets'} back={navigation.goBack} />
@@ -65,7 +79,10 @@ export default function rockets({ navigation, route }) {
                   <Icon name="search" />
                 </IconCol>
                 <InputCol>
-                  <Input placeholder="Search a rocket" />
+                  <Input
+                    onChangeText={(text) => searchRocket(text)}
+                    placeholder="Search a rocket"
+                  />
                 </InputCol>
               </InputContainer>
               {rocketsData ? (

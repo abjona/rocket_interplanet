@@ -49,7 +49,7 @@ export default function companies({ data, click }) {
           <Title>{data.name}</Title>
         </Row>
         <Row>
-          <Text>Travel company</Text>
+          <Text>Interplanetary travel</Text>
         </Row>
         <Row>
           <Rating />
